@@ -5,9 +5,13 @@ format: html
 embed-resources: true
 layout: margin-left
 editor: visual
+code-tools: true
+code-fold: true
 execute: 
   eval: false
   echo: true
+  warning: false
+  messages: false
 ---
 
 [**My Grade:**]{.underline} I believe my grade equivalent to course work evidenced below to be an A.
@@ -425,14 +429,25 @@ facebook_event_checkin_suspect <- facebook_event_checkin |>
 
 ```{r}
 #| label: wd-6-semi
+# Lab 5
+# Revision: Changed filter to semi_join to fulfill semi_join requirement
 
+witness_interviews <- interview |>
+  semi_join(bind_rows(witness1, witness2), 
+            by = join_by(person_id == id))
 ```
 
 -   `anti_join()`
 
 ```{r}
 #| label: wd-6-anti
+# Lab 5
+# Revision: Added anti_join and non_suspect_interview dataframe
 
+non_suspect_interview <- interview |>
+  anti_join( y= suspect_person, 
+             by = join_by( person_id == id )
+           )
 ```
 
 **WD-7: I can pivot dataframes from long to wide and visa versa**

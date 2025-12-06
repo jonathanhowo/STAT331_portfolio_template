@@ -7,15 +7,16 @@ editor: visual
 **Answer each of the following questions with *one sentence* including a brief explanation.**
 
 1. Finish the sentence with another student’s name: "If [Name of Student] doesn’t earn an A, then nobody should, because..." Explain your choice and your reasoning.
-
+If Kristen Ho doesn't receive an A, then nobody should because she was a great practice activity paired programming partner, with great attention to detail, and coding skills.
 
 2. What was the most difficult part of the class for you? List a general topic, a specific problem, a kind of work we did, etc. and explain why.
-
+The most difficult part of the class was remembering all of the work and details that we learned beforehand to use in the next assignments.
 
 3. What was the easiest part of the class for you? Explain why.
-
+I thought listening to the lectures was the easiest part because it was very clear and easy to follow.
 
 4. What part of the class surprised or interested you the most? Explain why.
-
+I was surprised that I really enjoyed the paired programming activities. I looked forward to them and was not use to collaborating in much coding activities before.
 
 5. Give one piece of advice to a student just beginning a quarter of STAT 331 that will help them be successful in learning.
+One advice I would give to a student beginning a quarter of STAT 331 is to keep up with all of the assignments and try to submit earlier than their due dates. It is easy to forget about the 5pm deadline.

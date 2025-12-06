@@ -44,6 +44,8 @@ teacher_evals <- read_csv(here("Week3", "lab3", "teacher_evals.csv"))
 
 ```{r}
 #| label: wd-1-xlsx
+# Practice Activity 4
+
 military <- read_xlsx("gov_spending_per_capita.xlsx",
                       sheet = "Share of Govt. spending",
                       skip  = 7,
@@ -583,6 +585,7 @@ teacher_evals_clean <- teacher_evals |>
 ```{r}
 #| label: r-2-3
 # Lab 8 Question 2
+
 pivot_table <- function(df, row, col) {
   if(!is.data.frame(df)) stop("Input must be a data frame")
   df |>
@@ -737,43 +740,41 @@ ca_childcare_2 <- ca_childcare |>
       mc_preschool = "Preschool"
     ) |>
          factor(levels = c("Infant", "Toddler", "Preschool")),
-    region = fct_reorder(
+    region = fct_reorder2(
       region, 
+      study_year,
       weekly_center_based_childcare_cost, 
-      .fun = median, 
+      .fun = last2, 
       .desc = TRUE
     )
-  )
-    
-ggplot(
-  data = ca_childcare_2, 
-  aes(
-    x = study_year,
-    y = weekly_center_based_childcare_cost,
-    color = region
-  )) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(method = "loess", se = TRUE) +
-  facet_wrap(~ age_group, ncol = 3) +
-  labs(
-    title = "Weekly Median Price for Center-Based Childcare ($)",
-    x = "Study Year",
-    y = "Weekly Median Price ($)",
-    color = "California Region"
-  ) +
-  scale_x_continuous(breaks = seq(2008, 2018, 2)) +
-  scale_color_brewer(palette = "Paired") +
-  theme(
-    aspect.ratio = 1,
-    axis.text = element_text(size = 6),
-    axis.title = element_text(size = 9, face = "bold"),
-    legend.title = element_text(size = 8),
-    legend.text = element_text(size = 7),
-    legend.position = "right",
-    panel.grid.minor = element_blank(),
-    strip.text = element_text(face = "bold", size = 9)
-  )
-
+  ) |>
+  ggplot(
+    aes(
+      x = study_year,
+      y = weekly_center_based_childcare_cost,
+      color = region
+    )) +
+    geom_point(alpha = 0.3) +
+    geom_smooth(method = "loess", se = TRUE) +
+    facet_wrap(~ age_group, ncol = 3) +
+    labs(
+      title = "Weekly Median Price for Center-Based Childcare ($)",
+      x = "Study Year",
+      y = "Weekly Median Price ($)",
+      color = "California Region"
+    ) +
+    scale_x_continuous(breaks = seq(2008, 2018, 2)) +
+    scale_color_brewer(palette = "Paired") +
+    theme(
+      aspect.ratio = 1,
+      axis.text = element_text(size = 6),
+      axis.title = element_text(size = 9, face = "bold"),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 7),
+      legend.position = "right",
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "bold", size = 9)
+    )
 ```
 
 **DVS-2: I use plot modifications to make my visualization clear to the reader.**
@@ -806,42 +807,41 @@ ca_childcare_2 <- ca_childcare |>
       mc_preschool = "Preschool"
     ) |>
          factor(levels = c("Infant", "Toddler", "Preschool")),
-    region = fct_reorder(
+    region = fct_reorder2(
       region, 
+      study_year,
       weekly_center_based_childcare_cost, 
-      .fun = median, 
+      .fun = last2, 
       .desc = TRUE
     )
-  )
-    
-ggplot(
-  data = ca_childcare_2, 
-  aes(
-    x = study_year,
-    y = weekly_center_based_childcare_cost,
-    color = region
-  )) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(method = "loess", se = TRUE) +
-  facet_wrap(~ age_group, ncol = 3) +
-  labs(
-    title = "Weekly Median Price for Center-Based Childcare ($)",
-    x = "Study Year",
-    y = "Weekly Median Price ($)",
-    color = "California Region"
-  ) +
-  scale_x_continuous(breaks = seq(2008, 2018, 2)) +
-  scale_color_brewer(palette = "Paired") +
-  theme(
-    aspect.ratio = 1,
-    axis.text = element_text(size = 6),
-    axis.title = element_text(size = 9, face = "bold"),
-    legend.title = element_text(size = 8),
-    legend.text = element_text(size = 7),
-    legend.position = "right",
-    panel.grid.minor = element_blank(),
-    strip.text = element_text(face = "bold", size = 9)
-  )
+  ) |>
+  ggplot(
+    aes(
+      x = study_year,
+      y = weekly_center_based_childcare_cost,
+      color = region
+    )) +
+    geom_point(alpha = 0.3) +
+    geom_smooth(method = "loess", se = TRUE) +
+    facet_wrap(~ age_group, ncol = 3) +
+    labs(
+      title = "Weekly Median Price for Center-Based Childcare ($)",
+      x = "Study Year",
+      y = "Weekly Median Price ($)",
+      color = "California Region"
+    ) +
+    scale_x_continuous(breaks = seq(2008, 2018, 2)) +
+    scale_color_brewer(palette = "Paired") +
+    theme(
+      aspect.ratio = 1,
+      axis.text = element_text(size = 6),
+      axis.title = element_text(size = 9, face = "bold"),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 7),
+      legend.position = "right",
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "bold", size = 9)
+    )
 ```
 
 -   I can modify my colors to be accessible to anyone's eyes
@@ -891,42 +891,41 @@ ca_childcare_2 <- ca_childcare |>
       mc_preschool = "Preschool"
     ) |>
          factor(levels = c("Infant", "Toddler", "Preschool")),
-    region = fct_reorder(
+    region = fct_reorder2(
       region, 
+      study_year,
       weekly_center_based_childcare_cost, 
-      .fun = median, 
+      .fun = last2, 
       .desc = TRUE
     )
-  )
-    
-ggplot(
-  data = ca_childcare_2, 
-  aes(
-    x = study_year,
-    y = weekly_center_based_childcare_cost,
-    color = region
-  )) +
-  geom_point(alpha = 0.3) +
-  geom_smooth(method = "loess", se = TRUE) +
-  facet_wrap(~ age_group, ncol = 3) +
-  labs(
-    title = "Weekly Median Price for Center-Based Childcare ($)",
-    x = "Study Year",
-    y = "Weekly Median Price ($)",
-    color = "California Region"
-  ) +
-  scale_x_continuous(breaks = seq(2008, 2018, 2)) +
-  scale_color_brewer(palette = "Paired") +
-  theme(
-    aspect.ratio = 1,
-    axis.text = element_text(size = 6),
-    axis.title = element_text(size = 9, face = "bold"),
-    legend.title = element_text(size = 8),
-    legend.text = element_text(size = 7),
-    legend.position = "right",
-    panel.grid.minor = element_blank(),
-    strip.text = element_text(face = "bold", size = 9)
-  )
+  ) |>
+  ggplot(
+    aes(
+      x = study_year,
+      y = weekly_center_based_childcare_cost,
+      color = region
+    )) +
+    geom_point(alpha = 0.3) +
+    geom_smooth(method = "loess", se = TRUE) +
+    facet_wrap(~ age_group, ncol = 3) +
+    labs(
+      title = "Weekly Median Price for Center-Based Childcare ($)",
+      x = "Study Year",
+      y = "Weekly Median Price ($)",
+      color = "California Region"
+    ) +
+    scale_x_continuous(breaks = seq(2008, 2018, 2)) +
+    scale_color_brewer(palette = "Paired") +
+    theme(
+      aspect.ratio = 1,
+      axis.text = element_text(size = 6),
+      axis.title = element_text(size = 9, face = "bold"),
+      legend.title = element_text(size = 8),
+      legend.text = element_text(size = 7),
+      legend.position = "right",
+      panel.grid.minor = element_blank(),
+      strip.text = element_text(face = "bold", size = 9)
+    )
 ```
 
 -   I can modify the text in my plot to be more readable
